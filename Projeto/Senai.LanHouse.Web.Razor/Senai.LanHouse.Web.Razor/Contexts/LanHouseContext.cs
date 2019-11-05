@@ -35,11 +35,8 @@ namespace Senai.LanHouse.Web.Razor.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                //"Data Source = .\SQLEXPRESS; initial catalog = LAN_HOUSE;user id = sa ; pwd = info@132" Microfsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir Contexts -Context LanHouseContext
-                optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS; initial catalog = LAN_HOUSE;user id = sa ; pwd = info@132");
-            }
+            //"Data Source = .\SQLEXPRESS; initial catalog = LAN_HOUSE;user id = sa ; pwd = info@132" Microfsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir Contexts -Context LanHouseContext
+            optionsBuilder.UseSqlServer("Data Source = .\\SQLEXPRESS; initial catalog = LAN_HOUSE;user id = sa ; pwd = info@132");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

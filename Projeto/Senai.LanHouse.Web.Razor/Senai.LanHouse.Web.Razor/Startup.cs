@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Senai.LanHouse.Web.Razor.Contexts;
 
 namespace Senai.LanHouse.Web.Razor
 {
@@ -25,9 +26,11 @@ namespace Senai.LanHouse.Web.Razor
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);//configura MVC
 
+            services.AddDbContext<LanHouseContext>();//configura contexto
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSession();//configuraçã osessão
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,12 +44,12 @@ namespace Senai.LanHouse.Web.Razor
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Usuarios}/{action=Index}/{id?}");
+                    template: "{controller=Usuarios}/{action=Login}");
             });
         }
     }

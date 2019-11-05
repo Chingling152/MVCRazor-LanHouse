@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Senai.LanHouse.Web.Razor.Models
 {
@@ -11,6 +11,7 @@ namespace Senai.LanHouse.Web.Razor.Models
         }
 
         public int Id { get; set; }
+        [StringLength(maximumLength:100)]
         public string Nome { get; set; }
 
         public ICollection<RegistrosDefeitos> RegistrosDefeitos { get; set; }
